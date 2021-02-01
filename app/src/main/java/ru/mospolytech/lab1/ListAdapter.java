@@ -47,19 +47,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     // Метод принимает объект ViewHolder и устанавливает необходимые данные
     // для соответствующей строки во view-компоненте
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ProductDetail news = list.get(position);
+        ProductDetail product = list.get(position);
         listimg = new ArrayList<>();
         listimg.clear();
-        holder.factIdText.setText(news.name);
-        holder.sourceView.setText("Просмотров: "+ news.views);
-        holder.dateNews.setText(news.price/100 + " ₽" );
-        Log.d(TAG, "onBindViewHolder: " + listimg.addAll(news.image_A));
+        holder.factIdText.setText(product.name);
+        holder.sourceView.setText("Просмотров: "+ product.views);
+        holder.dateNews.setText(product.price/100 + " ₽" );
+        Log.d(TAG, "onBindViewHolder: " + listimg.addAll(product.image_A));
         Glide.with(context).load( listimg.get(0).url+ "").into(holder.factImage);
 
         // Оработка нажатия на элемент списка
         holder.item.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProductActivity.class);
-            intent.putExtra("id", news.id);
+            intent.putExtra("id", product.id);
             context.startActivity(intent);
         });
     }

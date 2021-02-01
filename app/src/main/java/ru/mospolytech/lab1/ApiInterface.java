@@ -6,6 +6,8 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 // с помощью библиотки Retrofit мы превращаем HTTP API в интерфейс Java
+// С помощью декораторов @ мы превращаем запросы в понятный Java язык
+// Похоже на паттерн Наблюдатель
 public interface ApiInterface {
 
     // Запрос на получение списка всех товаров

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity  {
             list.clear(); // очищаем список товаров
         } else { // иначе
             disposables.add(api.productlist(textSearch.getText().toString())
-                    .subscribeOn(Schedulers.io()) // указываем тот поток, где должно происходить образение к серверу
+                    .subscribeOn(Schedulers.io()) // указываем тот поток, где должно происходить обращение к серверу
                     // в нашем случае - обрабатываем работу с сервером (вызов сервера) в потоке io (предназначен для ввода-вывода)
                     .observeOn(AndroidSchedulers.mainThread()) // результат обрабатываем в основном потоке, где интерфейс находится
                     .subscribe((productsList) -> { // обработка полученных результатов, если всё прошло корректно
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity  {
                                 Toast.LENGTH_LONG).show(); // Показываем ошибку
                         findViewById(R.id.progressBar).setVisibility(View.GONE); // скрыть спиннер загрузки
                         findViewById(R.id.list).setVisibility(View.VISIBLE); // сделать список видимым
-
                     }));
             // показываем уведомление о результатах
             Toast.makeText(this, "Показаны результаты поиска: " + textSearch.getText().toString(), Toast.LENGTH_SHORT).show();
